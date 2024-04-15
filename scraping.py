@@ -6,12 +6,12 @@ response = requests.get(url)   # envoi la requête
 #print(response)
 content = response.content
 soup = BeautifulSoup(content, 'html.parser')  # utilisez 'html.parser' au lieu de 'html'
-print(soup)
-temperature = soup.find("ul",class_="slider_item single")
+#print(soup)
+temperature = soup.find(id="primary_content")
 #ressenti = soup.find('span', class_='ressenti')
 #etat_ciel = soup.find('span', class_='etat-ciel')
 
 
-print(f"Temperature in Paris: {temperature}°C") 
+print(temperature) 
 #print("ressenti: " + ressenti)
 #print("etat_ciel: " + etat_ciel)
