@@ -1,36 +1,62 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://fr.wikipedia.org/wiki/Python_(langage)"
+def get_title(soup):
+    titre_elem = soup.find('h1', id='firstHeading')
+    if titre_elem:
+        titre = titre_elem.text.strip()
+        return titre
+    else:
+        return "Titre non trouvé"
 
-response = requests.get(url)
-content = response.content
+def get_first_paragraph(soup):
+    paragraphe_elem = soup.find('div', class_='mw-parser-output').find('p')
+    if paragraphe_elem:
+        paragraphe = paragraphe_elem.text.strip()
+        return paragraphe
+    else:
+        return "Paragraphe non trouvé"
 
-soup = BeautifulSoup(content, 'html.parser')
+def get_main_sections(soup):
+    sections = soup.find_all('span', class_='mw-headline')
+    if sections:
+        section_titles = [section.text.strip() for section in sections]
+        return section_titles
+    else:
+        return []
 
-# Trouver l'élément qui contient le titre de l'article
-titre_elem = soup.find('h1', id='firstHeading')
-#trouver la paragraphe
-paragraphe_elem = soup.find('div', class_='mw-parser-output').find('p')
+def get_table_of_contents(soup):
+    sommaire_elem = soup.find('div', class_='toc')
+    if sommaire_elem:
+        items = sommaire_elem.find_all('li')
+        sommaire = [item.text.strip() for item in items]
+        return sommaire
+    else:
+        return []
 
-# Trouver et afficher les titres des sections principales
-sections = soup.find_all('span', class_='mw-headline')
+def main():
+    url = "https://fr.wikipedia.org/wiki/Python_(langage)"
+    response = requests.get(url)
+    content = response.content
+    soup = BeautifulSoup(content, 'html.parser')
+    
+    titre = get_title(soup)
+    paragraphe = get_first_paragraph(soup)
+    sections = get_main_sections(soup)
+    sommaire = get_table_of_contents(soup)
 
-# Extraire et afficher le titre de l'article
-if titre_elem:
-    titre = titre_elem.text.strip()
     print(f"Titre de l'article : {titre}")
-else:
-    print("Titre non trouvé")
-
-# Extraire et afficher le premier paragraphe du contenu principal
-if paragraphe_elem:
-    paragraphe = paragraphe_elem.text.strip()
     print(f"\nPremier paragraphe : {paragraphe}")
+    
+    if sections:
+        print("\nSections principales :")
+        for section in sections:
+            print(f"- {section}")
+    
+    if sommaire:
+        print("\nSommaire :")
+        for item in sommaire:
+            print(f"- {item}")
 
-# Extraire et afficher les titres des sections principales
-if sections:
-    print("\nSections principales :")
-    for section in sections:
-        titre_section = section.text.strip()
-        print(f"- {titre_section}")
+if __name__ == "__main__":
+    main()
