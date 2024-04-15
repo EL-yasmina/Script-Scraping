@@ -1,0 +1,60 @@
+Titre de l'article : Python (langage)
+Premier paragraphe : Pour les articles homonymes, voir Python.
+
+Sections principales :
+- Utilisation
+- Historique
+- Au CWI
+- Au CNRI
+- À BeOpen
+- La Python Software Foundation
+- Caractéristiques
+- Syntaxe
+- Mots-clés du langage
+- Types de base
+- Programmation fonctionnelle
+- Programmation objet
+- Méthodes spéciales et définition des opérateurs
+- Générateurs
+- Réflexivité
+- Typage
+- Annotations
+- Compilation
+- Modèle objet
+- Méthodes
+- Visibilité
+- Héritage
+- Bibliothèque standard
+- Conventions de style
+- Interfaces graphiques
+- La communauté Python
+- Adoption de Python
+- Implémentations du langage
+- Distributions de Python
+- Historique des versions
+- Développement
+- Les PEP
+- Python 3
+- Philosophie
+- Planning et compatibilité
+- Python pour smartphones
+- Notes et références
+- Voir aussi
+- Bibliographie
+- Liste des principaux frameworks
+- Articles connexes
+
+----------------------------------------------------------------------------
+Titre de l'article : Java
+
+Premier paragraphe : Cette page d’homonymie répertorie les différents sujets et articles partageant un même nom.
+
+Sections principales :
+- Toponyme
+- Informatique
+- Zoologie
+- Poésie
+- Musique
+- Divers
+
+
