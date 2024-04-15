@@ -25,15 +25,6 @@ def get_main_sections(soup):
     else:
         return []
 
-def get_table_of_contents(soup):
-    sommaire_elem = soup.find('div', class_='toc')
-    if sommaire_elem:
-        items = sommaire_elem.find_all('li')
-        sommaire = [item.text.strip() for item in items]
-        return sommaire
-    else:
-        return []
-
 def main():
     url = "https://fr.wikipedia.org/wiki/Python_(langage)"
     response = requests.get(url)
@@ -43,7 +34,7 @@ def main():
     titre = get_title(soup)
     paragraphe = get_first_paragraph(soup)
     sections = get_main_sections(soup)
-    sommaire = get_table_of_contents(soup)
+
 
     print(f"Titre de l'article : {titre}")
     print(f"\nPremier paragraphe : {paragraphe}")
@@ -53,10 +44,7 @@ def main():
         for section in sections:
             print(f"- {section}")
     
-    if sommaire:
-        print("\nSommaire :")
-        for item in sommaire:
-            print(f"- {item}")
+
 
 if __name__ == "__main__":
     main()
