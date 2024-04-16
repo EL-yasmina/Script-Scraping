@@ -1,7 +1,7 @@
-import requests                                     # import la bibliothèque requests
-from bs4 import BeautifulSoup                       # import la bibliothèque bs4
+import requests                                     # import la bibliothèque requests (des requêtes HTTP de différents types : GET, POST, PUT...)
+from bs4 import BeautifulSoup                       # import la bibliothèque bs4  pour parser de code html  (trier)
 
-def get_soup():                                    #j'ai defini une fonction qui récupere le contenu du site wiki d'un article(ex:java)
+def get_soup():                                    #j'ai defini une fonction qui récupere le contenu d'un article (java) wikipedia par son url.
     url = "https://fr.wikipedia.org/wiki/Java"
     response = requests.get(url)                   # Envoyer une requête HTTP GET à l'URL et récupérer le contenu de la page
     content = response.content                     # Récupérer le contenu
@@ -9,8 +9,8 @@ def get_soup():                                    #j'ai defini une fonction qui
     return soup
 
 def get_title(soup):                                  
-    titre_elem = soup.find('h1', id='firstHeading')
-    if titre_elem:
+    titre_elem = soup.find('h1', id='firstHeading') #j'ai utilise la méthode find() de BeautifulSoup pour trouver le h1 avec son id
+    if titre_elem:          #si l'élement est trouvé elle extrait son texte et le retourne
         titre = titre_elem.text
         return titre
     else:
@@ -34,8 +34,8 @@ def get_sections(soup):
 
 
 
-soup = get_soup()              #j'ai appellé la fonction
-titre = get_title(soup)
+soup = get_soup()              #j'ai appellé la fonction get soup()
+titre = get_title(soup)        
 paragraphe = get_first_paragraph(soup)
 sections = get_sections(soup)
 
