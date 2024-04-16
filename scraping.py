@@ -1,7 +1,7 @@
 import requests   # import la bibliothèque requests
 from bs4 import BeautifulSoup    # import la bibliothèque bs4
 
-url = "https://meteofrance.com/previsions-meteo-france/paris/75000"   
+url = "https://meteofrance.com/previsions-meteo-france/paris/75000"    
 response = requests.get(url)   # envoi la requête
 #print(response)
 content = response.content
