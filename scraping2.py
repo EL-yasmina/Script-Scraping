@@ -25,10 +25,10 @@ def get_first_paragraph(soup):
         return "Paragraphe non trouvé"
 
 def get_sections(soup):
-    sections = soup.find_all('span', class_='mw-headline')
+    sections = soup.find_all('span', class_='mw-headline')    #find_all pour trouver tous les éléments span avec la classe mw-headline.
     section_titles = []                     #j'ai cree liste vide
     for section in sections:                    #j'ai bouclé sur les sections
-        section_titles.append(section.text.strip())    #ajouter le texte de section dans la liste à afficher
+        section_titles.append(section.text.strip())    #J'ajoute le titre de chaque section à la liste section_titles
     return section_titles
 
 
